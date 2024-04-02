@@ -7,7 +7,7 @@
 @keyframes sidebarAway {
     from { transform: translateX(-100px); opacity: 0;}
     to { display: block }
-    }
+}
 
 .sidebar.open {
     display: block;
