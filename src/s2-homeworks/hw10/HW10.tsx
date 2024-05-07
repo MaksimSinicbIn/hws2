@@ -7,10 +7,10 @@ import s2 from '../../s1-main/App.module.css'
 import {Loader} from './Loader'
 
 /*
-* 1 - в файле loadingReducer.ts дописать типы и логику +
-* 2 - получить isLoading из редакса +
-* 3 - дописать функцию setLoading +
-* 4 - сделать стили в соответствии с дизайном +
+* 1 - в файле loadingReducer.ts дописать типы и логику
+* 2 - получить isLoading из редакса
+* 3 - дописать функцию setLoading
+* 4 - сделать стили в соответствии с дизайном
 * */
 
 const HW10 = () => {
