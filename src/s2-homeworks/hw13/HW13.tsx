@@ -14,6 +14,15 @@ import errorUnknown from './images/error.svg'
 * 3 - сделать стили в соответствии с дизайном
 * */
 
+type ServerErrorType = {
+    errorText: string
+    info: string
+    yourBody: {
+        success: boolean
+    }
+    yourQuery: object
+}
+
 const HW13 = () => {
     const [code, setCode] = useState('')
     const [text, setText] = useState('')
@@ -41,23 +50,18 @@ const HW13 = () => {
                 // дописать
 
             })
-            .catch((e) => {
+            .catch((e: AxiosError<ServerErrorType>) => {
                 console.log(e);
-                if ((e as AxiosError).code === 'ERR_BAD_RESPONSE') {
-                    setCode('Ошибка 500!')
-                    setImage(error500)
-                    setText(e.response.data.errorText)
-                    setInfo(e.response.data.info)
-                } else if ((e as AxiosError).code === 'ERR_BAD_REQUEST') {
-                    setCode('Ошибка 400!')
-                    setImage(error400)
-                    setText(e.response.data.errorText)
+                if (e.response?.status) {
+                    setCode(`Ошибка ${e.response?.status}!`)
+                    setImage(e.response?.status === 500 ? error500 : error400)
+                    setText(e.response?.data.errorText)
                     setInfo(e.response.data.info)
                 } else {
                     setCode('Error!')
                     setImage(errorUnknown)
-                    setText((e as Error).message)
-                    setInfo((e as Error).name)
+                    setText(e.message)
+                    setInfo(e.name)
                 }
                 // дописать
 
