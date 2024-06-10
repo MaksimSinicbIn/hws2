@@ -20,6 +20,10 @@
 
 .rowHeader {
     display: flex;
+    border: solid 1px black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .loading {

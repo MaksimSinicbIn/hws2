@@ -51,15 +51,23 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
+                if (res) {
+                    setTechs(res.data.techs)
+                    setTotalCount(res.data.totalCount)
+                }
+                setLoading(false)
+                
                 // делает студент
-
                 // сохранить пришедшие данные
-
                 //
             })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({sort, page: newPage, count: newCount})
+        setSearchParams(`page=${newPage}&count=${newCount}`)
         // делает студент
 
         // setPage(
@@ -72,6 +80,10 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
+        setSort(newSort)
+        setPage(1)
+        sendQuery({sort: newSort, page, count})
+        setSearchParams(newSort)
         // делает студент
 
         // setSort(
