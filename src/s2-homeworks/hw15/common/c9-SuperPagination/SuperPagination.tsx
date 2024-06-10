@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
-import {Pagination} from '@mui/material'
+import { Pagination } from '@mui/material'
 import s from './SuperPagination.module.css'
 
 export type SuperPaginationPropsType = {
@@ -16,18 +16,18 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
         page, itemsCountForPage, totalCount, onChange, id = 'hw15',
     }
 ) => {
-    const lastPage = Math.ceil(totalCount/itemsCountForPage) // пишет студент // вычислить количество страниц
+    const lastPage = Math.ceil(totalCount / itemsCountForPage) // пишет студент // вычислить количество страниц
 
     const onChangeCallback = (event: ChangeEvent<unknown>, page: number) => {
         onChange(page, itemsCountForPage)
         console.log('onChangeCallback');
-        
+
     }
 
     const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
         onChange(page, +event)
-        
-        
+
+
         // пишет студент
     }
 
@@ -36,7 +36,33 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
             <Pagination
                 id={id + '-pagination'}
                 sx={{
-                    // стили для Pagination // пишет студент
+                    ".MuiPagination-ul": {
+                        gap: "12px"
+                    },
+                    ".MuiButtonBase-root": {
+                        minWidth: "24px",
+                        height: "24px",
+                        margin: "0",
+                        color: "inherit",
+                        borderRadius: "2px",
+                        "&.Mui-selected, &.Mui-selected:hover": {
+                            color: "#fff",
+                            backgroundColor: "#0066CC"
+                        },
+                        "&:hover": {
+                            color: "#fff",
+                            backgroundColor: "#0178f0",
+                        }
+                    },
+                    ".MuiPaginationItem-ellipsis": {
+                        minWidth: "24px",
+                        height: "24px",
+                        margin: "0",
+                        padding: "0",
+                        color: "inherit",
+                        lineHeight: "1.8"
+                    }
+
                 }}
                 page={page}
                 count={lastPage}
@@ -46,22 +72,22 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
             />
 
             <span className={s.text1}>
-                показать
+                Показать
             </span>
 
             <SuperSelect
                 id={id + '-pagination-select'}
                 value={itemsCountForPage}
                 options={[
-                    {id: 4, value: 4},
-                    {id: 7, value: 7},
-                    {id: 10, value: 10},
+                    { id: 4, value: 4 },
+                    { id: 7, value: 7 },
+                    { id: 10, value: 10 },
                 ]}
                 onChangeOption={onChangeSelect}
             />
 
             <span className={s.text2}>
-                строк в таблице
+                Cтрок в таблице
             </span>
         </div>
     )
