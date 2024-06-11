@@ -44,13 +44,9 @@ const HW14 = () => {
 
     const onChangeText = (value: string) => {
         setFind(value)
-        setSearchParams(`find=${value}`)
-        // делает студент
-
-        // добавить/заменить значение в квери урла
-        // setSearchParams(
-
-        //
+        const findQuery: { search?: string } = value ? {search: value} : {}
+        const {search, ...restParams} = Object.fromEntries(searchParams)
+        setSearchParams({...restParams, ...findQuery})
     }
 
     useEffect(() => {
