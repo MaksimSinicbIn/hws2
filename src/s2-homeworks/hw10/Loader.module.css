@@ -1,11 +1,27 @@
 .loader {
     width: 90px;
     height: 90px;
-    border-radius: 50%;
-    background:
-        conic-gradient(from 180deg at 50% 50%, rgba(241, 241, 241, 0), rgb(81, 45, 228));
-        -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 0);
+    position: relative;
+    border-radius: 90px;
+    background: conic-gradient(from 90deg at 25% 50%, rgba(255, 255, 255, 0) 20deg, #512de4 360deg);
     animation: spin 1.5s 1;
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 10px - 0.5px),
+        #000 calc(100% - 10px + 0.5px)
+    );
+}
+
+.loader::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    background: #512de4;
 }
 
 @keyframes spin {
